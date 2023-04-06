@@ -1,6 +1,5 @@
 #include "Game.h"
-#include"KeyboardComponent.h"
-#include "TextureManager.h"
+#include "Managers.h"
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;

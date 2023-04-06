@@ -9,7 +9,7 @@ void KeyboardComponent::CheckInput()
 		{
 		case SDLK_w:
 			cout << "w" << endl;
-			playerY -= 64;
+			playerY -= Game::gridSize;
 			break;
 		case SDLK_a:
 			cout << "a" << endl;
@@ -17,11 +17,11 @@ void KeyboardComponent::CheckInput()
 			break;
 		case SDLK_s:
 			cout << "s" << endl;
-			playerY += 64;
+			playerY += Game::gridSize;
 			break;
 		case SDLK_d:
 			cout << "d" << endl;
-			playerX += 64;
+			playerX += Game::gridSize;
 			break;
 		case SDLK_ESCAPE:
 			cout << "ecs" << endl;
@@ -35,17 +35,17 @@ void KeyboardComponent::CheckInput()
 
 void KeyboardComponent::CheckBounds()
 {
-	if (playerX > 800 - 64)
+	if (playerX > 800 - Game::gridSize)
 	{
-		playerX = 800 - 64;
+		playerX = 800 - Game::gridSize;
 	}
 	if (playerX < 0)
 	{
 		playerX = 0;
 	}
-	if (playerY > 800 - 64)
+	if (playerY > 800 - Game::gridSize)
 	{
-		playerY = 800 - 64;
+		playerY = 800 - Game::gridSize;
 	}
 	if (playerY < 0)
 	{
