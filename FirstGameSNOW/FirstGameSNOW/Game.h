@@ -19,6 +19,7 @@ public:
 	static SDL_Renderer* renderer;
 	static SDL_Event event;
 	static bool isRunning;
+	static int gridSize;
 private:
 
 	SDL_Window* window;

@@ -9,7 +9,7 @@ void PlayerManager::init()
 	playerTex = TextureManager::LoadTexture("assets/player.png");
 }
 
-void PlayerManager::update(SDL_Rect destRect, SDL_Rect srcRect)
+void PlayerManager::update()
 {
 	destRect.x = KeyB.playerX;
 	destRect.y = KeyB.playerY;
@@ -19,7 +19,7 @@ void PlayerManager::update(SDL_Rect destRect, SDL_Rect srcRect)
 	srcRect = { 0, 0, 32, 32 };
 }
 
-void PlayerManager::render( SDL_Rect destRect, SDL_Rect srcRect)
+void PlayerManager::render()
 {
 	TextureManager::Draw(playerTex, srcRect, destRect);
 }

@@ -1,14 +1,10 @@
 #pragma once
-#include "EntityManager.h"
-
-class PlayerManager : public EntityManager
+class EntityManager
 {
 public:
 	void init();
 	void update();
 	void render();
 	void clean();
-
-private:
-
 };
+
