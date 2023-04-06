@@ -1,13 +1,17 @@
 #include "Game.h"
-#include"KeyboardHandler.h"
+#include"KeyboardComponent.h"
+#include "TextureManager.h"
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
+SDL_Texture* playerTex;
+SDL_Rect srcRect, destRect;
+
 bool Game::isRunning = false;
 
 Game game;
-KeyboardHandler kh;
+KeyboardComponent kh;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
@@ -30,6 +34,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 		isRunning = true;
 	}
 
+	playerTex = TextureManager::LoadTexture("assets/player.png");
+
 }
 
 
@@ -51,12 +57,18 @@ void Game::handleEvents()
 void Game::update()
 {
 	kh.CheckInput();
+
+	destRect = { kh.playerX, kh.playerY, 64, 64 };
+	srcRect = { 0, 0, 32, 32 };
+	
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
+	TextureManager::Draw(playerTex, srcRect, destRect);
 	SDL_RenderPresent(renderer);
+
 }
 
 void Game::clean()
