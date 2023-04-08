@@ -13,7 +13,7 @@ void KeyboardComponent::CheckInput()
 			break;
 		case SDLK_a:
 			cout << "a" << endl;
-			playerX -= 64;
+			playerX -= Game::gridSize;
 			break;
 		case SDLK_s:
 			cout << "s" << endl;
