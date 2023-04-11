@@ -27,6 +27,12 @@ void Entity::setLoc(int x, int y)
 	EntityLocX = x;
 	EntityLocY = y;
 }
+
+SDL_Rect Entity::setLoc(int scale)
+{
+	SDL_Rect  tmpRect = { EntityLocX, EntityLocY, 32 * scale, 32 * scale };
+	return tmpRect;
+}
 /*
 int Entity::getX(Entity e)
 {

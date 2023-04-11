@@ -58,7 +58,8 @@ void Game::handleEvents()
 void Game::update()
 {
 	kh.CheckInput();
-	destRect = { Player.EntityLocX, Player.EntityLocY, 64, 64 };
+	destRect = Player.setLoc(2);
+	//destRect = { Player.EntityLocX, Player.EntityLocY, 64, 64 };
 	srcRect = { 0, 0, 32, 32 };
 	
 }

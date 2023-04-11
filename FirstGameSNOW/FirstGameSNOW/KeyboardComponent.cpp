@@ -1,6 +1,5 @@
 #include"KeyboardComponent.h"
 #include"Entity.h"
-#include<iostream>
 Entity Player;
 void KeyboardComponent::CheckInput()
 {
