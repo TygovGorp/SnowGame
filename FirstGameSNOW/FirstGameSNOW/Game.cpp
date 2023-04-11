@@ -4,8 +4,8 @@
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
-SDL_Texture* playerTex;
-SDL_Rect srcRect, destRect;
+
+
 
 bool Game::isRunning = false;
 
@@ -15,7 +15,6 @@ KeyboardComponent kh;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
-	Player.Build(30, 10, 5, 0, 0, 2);
 	int flags = 0;
 
 	if (fullscreen)
@@ -34,9 +33,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
 		isRunning = true;
 	}
-
-	playerTex = TextureManager::LoadTexture("assets/player.png");
-
+	Player.Build(30, 10, 5, 0, 0, 2, "assets/player.png");
 }
 
 
@@ -58,16 +55,19 @@ void Game::handleEvents()
 void Game::update()
 {
 	kh.CheckInput();
+	Player.Update();
+	/*
 	destRect = Player.setLoc(2);
 	//destRect = { Player.EntityLocX, Player.EntityLocY, 64, 64 };
 	srcRect = { 0, 0, 32, 32 };
+	*/
 	
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
-	TextureManager::Draw(playerTex, srcRect, destRect);
+	Player.Render();
 	SDL_RenderPresent(renderer);
 
 }
