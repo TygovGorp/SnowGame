@@ -36,17 +36,17 @@ void KeyboardComponent::CheckInput()
 
 void KeyboardComponent::CheckBounds()
 {
-	if (keyb.X > 800 - Game::gridSize)
+	if (keyb.X > 768 - Game::gridSize)
 	{
-		keyb.X = 800 - Game::gridSize;
+		keyb.X = 768 - Game::gridSize;
 	}
 	if (keyb.X < 0)
 	{
 		keyb.X = 0;
 	}
-	if (keyb.Y > 800 - Game::gridSize)
+	if (keyb.Y > 768 - Game::gridSize)
 	{
-		keyb.Y = 800 - Game::gridSize;
+		keyb.Y = 768 - Game::gridSize;
 	}
 	if (keyb.Y < 0)
 	{
