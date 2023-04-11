@@ -9,9 +9,10 @@ class KeyboardComponent
 {
 public:
 	void CheckInput();
-	int playerX;
-	int playerY;
+	static KeyboardComponent kh;
 private:
+	int X;
+	int Y;
 	SDL_Event event;
 	void CheckBounds();
 };

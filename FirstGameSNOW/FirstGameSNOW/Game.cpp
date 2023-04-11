@@ -10,10 +10,12 @@ SDL_Rect srcRect, destRect;
 bool Game::isRunning = false;
 
 Game game;
+extern Entity Player;
 KeyboardComponent kh;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
+	Player.Build(30, 10, 5, 0, 0, 2);
 	int flags = 0;
 
 	if (fullscreen)
@@ -56,8 +58,7 @@ void Game::handleEvents()
 void Game::update()
 {
 	kh.CheckInput();
-
-	destRect = { kh.playerX, kh.playerY, 64, 64 };
+	destRect = { Player.EntityLocX, Player.EntityLocY, 64, 64 };
 	srcRect = { 0, 0, 32, 32 };
 	
 }

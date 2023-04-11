@@ -1,6 +1,7 @@
 #include"KeyboardComponent.h"
-
-
+#include"Entity.h"
+#include<iostream>
+Entity Player;
 void KeyboardComponent::CheckInput()
 {
 	if (Game::event.type == SDL_KEYDOWN)
@@ -9,19 +10,19 @@ void KeyboardComponent::CheckInput()
 		{
 		case SDLK_w:
 			cout << "w" << endl;
-			playerY -= Game::gridSize;
+			Y -= Game::gridSize;
 			break;
 		case SDLK_a:
 			cout << "a" << endl;
-			playerX -= Game::gridSize;
+			X -= Game::gridSize;
 			break;
 		case SDLK_s:
 			cout << "s" << endl;
-			playerY += Game::gridSize;
+			Y += Game::gridSize;
 			break;
 		case SDLK_d:
 			cout << "d" << endl;
-			playerX += Game::gridSize;
+			X += Game::gridSize;
 			break;
 		case SDLK_ESCAPE:
 			cout << "ecs" << endl;
@@ -35,21 +36,22 @@ void KeyboardComponent::CheckInput()
 
 void KeyboardComponent::CheckBounds()
 {
-	if (playerX > 800 - Game::gridSize)
+	if (X > 800 - Game::gridSize)
 	{
-		playerX = 800 - Game::gridSize;
+		X = 800 - Game::gridSize;
 	}
-	if (playerX < 0)
+	if (X < 0)
 	{
-		playerX = 0;
+		X = 0;
 	}
-	if (playerY > 800 - Game::gridSize)
+	if (Y > 800 - Game::gridSize)
 	{
-		playerY = 800 - Game::gridSize;
+		Y = 800 - Game::gridSize;
 	}
-	if (playerY < 0)
+	if (Y < 0)
 	{
-		playerY = 0;
+		Y = 0;
 	}
-
+	Player.setLoc(X, Y);
+	//cout << Player.EntityLocX << "," << Player.EntityLocY << endl;			debug code
 }
