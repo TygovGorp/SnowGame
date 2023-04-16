@@ -11,7 +11,7 @@ void BattleManager::checkBattle(Entity** Enemies, Entity player)
 			&&
 			player.EntityLocY == Enemies[i]->EntityLocY
 			&&
-			Enemies[i]->getHP() > 0)
+			Enemies[i]->getHP() > 0 )
 		{
 
 			cout << "fight" << endl;

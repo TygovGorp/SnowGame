@@ -11,10 +11,10 @@ bool Game::isRunning = false;
 
 Game game;
 extern Entity Player;
-Entity Enemy1;
 KeyboardComponent kh;
 EnemyManager em;
 BattleManager bm;
+ConcreteManager cm;
 Entity** AllEnemy;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
@@ -43,6 +43,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
 		isRunning = true;
 	}
+
 	Player.Build(100, 10, 5, 0, 0, 2, "assets/player.png");
 }
 
@@ -67,12 +68,14 @@ void Game::update()
 	bm.checkBattle(AllEnemy, Player);
 	kh.CheckInput();
 	Player.Update();
+	cm.PlaceConcrete(Player);
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
 	Player.Render();
+	cm.Render();
 	SDL_RenderPresent(renderer);
 
 }
