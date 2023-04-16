@@ -11,6 +11,7 @@ bool Game::isRunning = false;
 
 Game game;
 extern Entity Player;
+Entity Enemy1;
 KeyboardComponent kh;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
@@ -55,13 +56,7 @@ void Game::handleEvents()
 void Game::update()
 {
 	kh.CheckInput();
-	Player.Update();
-	/*
-	destRect = Player.setLoc(2);
-	//destRect = { Player.EntityLocX, Player.EntityLocY, 64, 64 };
-	srcRect = { 0, 0, 32, 32 };
-	*/
-	
+	Player.Update();	
 }
 
 void Game::render()
