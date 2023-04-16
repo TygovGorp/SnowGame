@@ -20,6 +20,7 @@ public:
 	static SDL_Event event;
 	static bool isRunning;
 	static const int gridSize = 64;
+	static const int ScreenSize = 768;
 private:
 
 	SDL_Window* window;

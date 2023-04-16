@@ -13,9 +13,17 @@ Game game;
 extern Entity Player;
 Entity Enemy1;
 KeyboardComponent kh;
+EnemyManager em;
+Entity** AllEnemy;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
+	int EnemyCount;
+	cout << "how many Enemys?\n";
+	cin >> EnemyCount;
+	AllEnemy = em.init(EnemyCount);
+	
+
 	int flags = 0;
 
 	if (fullscreen)

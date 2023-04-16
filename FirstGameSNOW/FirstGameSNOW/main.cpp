@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 	int frameTime;
 
 	game = new Game();
-	game->init("GameWindow", 768, 768, false);
+	game->init("GameWindow", Game::ScreenSize, Game::ScreenSize, false);
 
 	while (game->running())
 	{
