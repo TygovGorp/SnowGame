@@ -14,14 +14,21 @@ extern Entity Player;
 Entity Enemy1;
 KeyboardComponent kh;
 EnemyManager em;
+BattleManager bm;
 Entity** AllEnemy;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
-	int EnemyCount;
+	/* for future implementation
 	cout << "how many Enemys?\n";
-	cin >> EnemyCount;
-	AllEnemy = em.init(EnemyCount);
+	cin >> Game::EnemyCount;
+	*/
+	AllEnemy = em.init(Game::EnemyCount);
+	for (int i = 0; i < Game::EnemyCount; i++)
+	{
+		cout << AllEnemy[i]->EntityLocX << endl;
+		cout << AllEnemy[i]->EntityLocY << "\n" << endl;
+	}
 	
 
 	int flags = 0;
@@ -64,7 +71,9 @@ void Game::handleEvents()
 void Game::update()
 {
 	kh.CheckInput();
-	Player.Update();	
+	Player.Update();
+	bm.checkBattle(AllEnemy, Player);
+
 }
 
 void Game::render()

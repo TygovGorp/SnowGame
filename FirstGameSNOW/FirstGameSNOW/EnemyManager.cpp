@@ -18,10 +18,25 @@ Entity** EnemyManager::init(int EnemyNum)
 void EnemyManager::CheckDup(Entity** Entitys, int size)
 {
 	for (int i = 0; i < size; i++) {
+
+		if (Entitys[i]->EntityLocX == 0 && Entitys[i]->EntityLocY == 0)
+		{
+			GenerateRandomInt(*Entitys[i]);
+			CheckDup(Entitys, size);
+		}
+
 		for (int j = i + 1; j < size; j++) {
+
+			if (Entitys[j]->EntityLocX == 0 && Entitys[j]->EntityLocY == 0)
+			{
+				GenerateRandomInt(*Entitys[i]);
+				CheckDup(Entitys, size);
+			}
+
 			if (Entitys[i]->EntityLocX == Entitys[j]->EntityLocX 
 				&&
-				Entitys[i]->EntityLocY == Entitys[j]->EntityLocY) {
+				Entitys[i]->EntityLocY == Entitys[j]->EntityLocY) 
+			{
 				GenerateRandomInt(*Entitys[i]);
 				CheckDup(Entitys, size);
 			}

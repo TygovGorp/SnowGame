@@ -21,6 +21,7 @@ public:
 	static bool isRunning;
 	static const int gridSize = 64;
 	static const int ScreenSize = 768;
+	static const int EnemyCount = 10;
 private:
 
 	SDL_Window* window;
