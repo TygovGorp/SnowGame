@@ -24,17 +24,54 @@ void Entity::Render()
 
 void Entity::setHP(int h)
 {
-	hp = h;
+	if ((hp -= h) > 0)
+	{
+		dmg -= h;
+	}
+	else
+	{
+		std::cout << "Enemy has gone to the after life" << std::endl;
+	}
 }
 
 void Entity::setDMG(int d)
 {
-	dmg = d;
+	if ((dmg -= d) > 0)
+	{
+		dmg -= d;
+	}
+	else
+	{
+		dmg = 1;
+	}
+	
 }
 
 void Entity::setSPD(int s)
 {
-	spd = s;
+	if ((spd -= s) > 0)
+	{
+		spd -= s;
+	}
+	else
+	{
+		spd = 1;
+	}
+}
+
+int Entity::getHP()
+{
+	return hp;
+}
+
+int Entity::getDMG()
+{
+	return dmg;
+}
+
+int Entity::getSPD()
+{
+	return spd;
 }
 
 void Entity::setLoc(int x, int y)

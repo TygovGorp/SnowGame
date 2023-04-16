@@ -54,6 +54,4 @@ void KeyboardComponent::CheckBounds()
 	}
 	Player.setLoc(keyb.X, keyb.Y);
 	//cout << Player.EntityLocX << "," << Player.EntityLocY << endl;			debug code
-	cout << Player.EntityLocX << endl;
-	cout << Player.EntityLocY << "\n" << endl;
 }

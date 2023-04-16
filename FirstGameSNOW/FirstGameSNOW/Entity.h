@@ -10,13 +10,16 @@ public:
 	void setDMG(int d);
 	void setSPD(int s);
 	void setLoc(int x, int y);
+	int getHP();
+	int getDMG();
+	int getSPD();
 	int EntityLocX;
 	int EntityLocY;
 
 private:
-	int hp;
-	int dmg;
-	int spd;
+	int hp = 50;
+	int dmg = 10;
+	int spd = 5;
 	int imgScale;
 	SDL_Rect srcRect, destRect;
 	SDL_Texture* playerTex;

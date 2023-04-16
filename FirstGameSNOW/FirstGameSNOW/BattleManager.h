@@ -5,8 +5,8 @@ class BattleManager
 public:
 	void checkBattle(Entity** Enemies, Entity player);
 	void Battle(Entity P, Entity* E);
-	void Attack();
-	void Heal();
-	void Run();
+	void Attack(Entity P, Entity* E);
+	void Item(Entity P, Entity* E);
+	void Run(Entity P, Entity* E);
 };
 

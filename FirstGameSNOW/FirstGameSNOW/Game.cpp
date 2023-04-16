@@ -24,12 +24,6 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	cin >> Game::EnemyCount;
 	*/
 	AllEnemy = em.init(Game::EnemyCount);
-	for (int i = 0; i < Game::EnemyCount; i++)
-	{
-		cout << AllEnemy[i]->EntityLocX << endl;
-		cout << AllEnemy[i]->EntityLocY << "\n" << endl;
-	}
-	
 
 	int flags = 0;
 
@@ -49,7 +43,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
 		isRunning = true;
 	}
-	Player.Build(30, 10, 5, 0, 0, 2, "assets/player.png");
+	Player.Build(100, 10, 5, 0, 0, 2, "assets/player.png");
 }
 
 
@@ -70,10 +64,9 @@ void Game::handleEvents()
 
 void Game::update()
 {
+	bm.checkBattle(AllEnemy, Player);
 	kh.CheckInput();
 	Player.Update();
-	bm.checkBattle(AllEnemy, Player);
-
 }
 
 void Game::render()
