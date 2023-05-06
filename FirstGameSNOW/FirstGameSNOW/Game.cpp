@@ -14,8 +14,8 @@ extern Entity Player;
 KeyboardComponent kh;
 EnemyManager em;
 BattleManager bm;
-ConcreteManager cm;
 Entity** AllEnemy;
+SDL_Rect ConcRect;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
@@ -45,6 +45,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	}
 
 	Player.Build(100, 10, 5, 0, 0, 2, "assets/player.png");
+	cm.init("assets/concrete.png");
 }
 
 
@@ -68,14 +69,12 @@ void Game::update()
 	bm.checkBattle(AllEnemy, Player);
 	kh.CheckInput();
 	Player.Update();
-	cm.PlaceConcrete(Player);
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
 	Player.Render();
-	cm.Render();
 	SDL_RenderPresent(renderer);
 
 }

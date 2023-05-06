@@ -13,9 +13,17 @@ void BattleManager::checkBattle(Entity** Enemies, Entity player)
 			&&
 			Enemies[i]->getHP() > 0 )
 		{
-
+			
 			cout << "fight" << endl;
+			player.setBattle(1);
 			Battle(player, Enemies[i]);
+		}
+		else
+		{
+			if (player.getBattle() == true)
+			{
+				player.setBattle(0);
+			}
 		}
 	}
 
@@ -23,7 +31,7 @@ void BattleManager::checkBattle(Entity** Enemies, Entity player)
 
 void BattleManager::Battle(Entity P, Entity* E)
 {
-	
+	P.setBattle(1); //set player to in battle
 	cout << "You encountert a enemy!\n What will you do?\n 1: Attack\n 2: Item\n 3: Run\n";
 	int ans;
 	cin >> ans;
