@@ -47,12 +47,15 @@ void EnemyManager::CheckDup(Entity** Entitys, int size)
 
 void EnemyManager::GenerateRandomInt(Entity& Entity)
 {
-	int min = 0;
-	int max = Game::ScreenSize/Game::gridSize;
-	std::random_device rd; //generate seed
-	std::mt19937 rng(rd()); //initialize seed
-	std::uniform_int_distribution<int> dist(min, max); //used to define a uniform distribution of integers between the min and max values
-	int tmpRand1 = dist(rng); //generates a random number
-	int tmpRand2 = dist(rng);
+	uint32_t x = std::random_device()();
+	uint32_t y = std::random_device()();
+	x ^= x << 13;
+	x ^= x >> 17;
+	x ^= x << 5;
+	y ^= y << 13;
+	y ^= y >> 17;
+	y ^= y << 5;
+	int tmpRand1 = x % (Game::ScreenSize / Game::gridSize);
+	int tmpRand2 = y % (Game::ScreenSize / Game::gridSize);
 	Entity.setLoc(tmpRand1 * Game::gridSize, tmpRand2 * Game::gridSize);
 }
