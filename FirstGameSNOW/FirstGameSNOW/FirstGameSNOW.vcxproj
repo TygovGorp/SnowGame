@@ -146,6 +146,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BattleManager.cpp" />
+    <ClCompile Include="Concrete.cpp" />
+    <ClCompile Include="ConcreteManager.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -155,6 +157,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleManager.h" />
+    <ClInclude Include="Concrete.h" />
+    <ClInclude Include="ConcreteManager.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />

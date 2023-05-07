@@ -1,12 +1,29 @@
 #include "Concrete.h"
 
-
-Entity** Concrete::init()
+void Concrete::init(Entity Player)
 {
-	new Entity();
-	Entity
+	ConcreteTex = TextureManager::LoadTexture("assets/concrete.png");
+	srcRect = { 0, 0, 32, 32 };
+	Concrete::checkDup(Player);
+
 }
 
-void Concrete::CheckDup()
+bool Concrete::checkDup(Entity Player)
 {
+	if (ConcreteArr[Player.EntityLocX / Game::gridSize][Player.EntityLocY / Game::gridSize] == false)
+	{
+		destRect = { Player.EntityLocX, Player.EntityLocY, Game::gridSize, Game::gridSize };
+		ConcreteArr[Player.EntityLocX / Game::gridSize][Player.EntityLocY / Game::gridSize] = true;
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
+
+void Concrete::render()
+{
+	TextureManager::Draw(ConcreteTex, srcRect, destRect);
 }

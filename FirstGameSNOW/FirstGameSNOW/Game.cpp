@@ -15,7 +15,7 @@ KeyboardComponent kh;
 EnemyManager em;
 BattleManager bm;
 Entity** AllEnemy;
-SDL_Rect ConcRect;
+ConcreteManager cm;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
@@ -68,11 +68,13 @@ void Game::update()
 	bm.checkBattle(AllEnemy, Player);
 	kh.CheckInput();
 	Player.Update();
+	cm.update(Player);
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
+	cm.render(Player);
 	Player.Render();
 	SDL_RenderPresent(renderer);
 
