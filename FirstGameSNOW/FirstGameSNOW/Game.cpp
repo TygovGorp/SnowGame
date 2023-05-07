@@ -45,7 +45,6 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	}
 
 	Player.Build(100, 10, 5, 0, 0, 2, "assets/player.png");
-	cm.init("assets/concrete.png");
 }
 
 
