@@ -67,9 +67,17 @@ void Game::handleEvents()
 
 void Game::update()
 {
+
 	kh.CheckInput();
 	Player.Update();
-	bm.checkBattle(AllEnemy, Player);
+	if (Player.getBattle() == 0)
+	{
+		bm.checkBattle(AllEnemy, Player);
+	}
+	else
+	{
+		bm.Battle(Player, *AllEnemy);
+	}
 	cm.update(Player, AllConcrete);
 }
 

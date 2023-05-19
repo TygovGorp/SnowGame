@@ -13,8 +13,6 @@ void BattleManager::checkBattle(Entity** Enemies, Entity player)
 			&&
 			Enemies[i]->getHP() > 0 )
 		{
-			
-			cout << "fight" << endl;
 			player.setBattle(1);
 			Battle(player, Enemies[i]);
 		}
@@ -31,24 +29,28 @@ void BattleManager::checkBattle(Entity** Enemies, Entity player)
 
 void BattleManager::Battle(Entity P, Entity* E)
 {
-	cout << "You encountert a enemy!\n What will you do?\n 1: Attack\n 2: Item\n 3: Run\n";
-	int ans;
-	cin >> ans;
-	switch (ans)
+	if (msgSent == false)
 	{
-	case 1:
+		cout << "You encountert a enemy!\n What will you do?\n 1: Attack\n 2: Item\n 3: Run\n";
+	}
+	switch (Game::event.key.keysym.sym)
+	{
+	case SDLK_1:
 		Attack(P, E);
+		msgSent = true;
 		break;
-	case 2:
+	case SDLK_2:
 		Item(P, E);
+		msgSent = true;
 		break;
-	case 3:
+	case SDLK_3:
 		Run(P, E);
+		msgSent = true;
 		break;
 	default:
+		msgSent = true;
 		break;
 	}
-	std::cout << "battle" << endl;
 }
 
 void BattleManager::Attack(Entity P, Entity* E)

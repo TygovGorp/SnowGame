@@ -6,45 +6,6 @@ void KeyboardComponent::CheckInput()
 {
 	if (Game::event.type == SDL_KEYDOWN)
 	{
-		/*
-		switch (Game::event.key.keysym.sym)
-		{
-		case SDLK_w:
-			if (Player.getBattle() == 0)
-			{
-				cout << "w" << endl;
-				keyb.Y -= Game::gridSize;
-			}
-			break;
-		case SDLK_a:
-			if (Player.getBattle() == 0)
-			{
-				cout << "a" << endl;
-				keyb.X -= Game::gridSize;
-			}
-			break;
-		case SDLK_s:
-			if (Player.getBattle() == 0)
-			{
-				cout << "s" << endl;
-				keyb.Y += Game::gridSize;
-			}
-			break;
-		case SDLK_d:
-			if (Player.getBattle() == 0)
-			{
-				cout << "d" << endl;
-				keyb.X += Game::gridSize;
-			}
-			break;
-		case SDLK_ESCAPE:
-			cout << "ecs" << endl;
-			Game::isRunning = false;
-		default:
-			break;
-		}
-		*/
-		std::cout << "keyboard input check" << endl;
 		if (Player.getBattle() == 0)
 		{
 			if (Game::event.key.keysym.sym == SDLK_w)

@@ -8,5 +8,7 @@ public:
 	void Attack(Entity P, Entity* E);
 	void Item(Entity P, Entity* E);
 	void Run(Entity P, Entity* E);
+private:
+	bool msgSent = false;
 };
 
