@@ -5,9 +5,10 @@
 class ConcreteManager
 {
 public:
-	void update(Entity Player);
-	void render(Entity Player);
+	Concrete** init();
+	void update(Entity Player, Concrete** AllConcrete);
+	void render(Entity Player, Concrete** AllConcrete);
 private:
-	Concrete concreteArr[Game::ScreenSize / Game::gridSize][Game::ScreenSize / Game::gridSize];
+	bool snowGone[Game::ScreenSize / Game::gridSize][Game::ScreenSize / Game::gridSize] = { false };
 };
 

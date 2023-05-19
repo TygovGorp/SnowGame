@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Managers.h"
+#include<iostream>
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
@@ -15,6 +16,7 @@ KeyboardComponent kh;
 EnemyManager em;
 BattleManager bm;
 Entity** AllEnemy;
+Concrete** AllConcrete;
 ConcreteManager cm;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
@@ -24,7 +26,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	cin >> Game::EnemyCount;
 	*/
 	AllEnemy = em.init(Game::EnemyCount);
-
+	AllConcrete = cm.init();
 	int flags = 0;
 
 	if (fullscreen)
@@ -65,16 +67,16 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	bm.checkBattle(AllEnemy, Player);
 	kh.CheckInput();
 	Player.Update();
-	cm.update(Player);
+	bm.checkBattle(AllEnemy, Player);
+	cm.update(Player, AllConcrete);
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
-	cm.render(Player);
+	cm.render(Player, AllConcrete);
 	Player.Render();
 	SDL_RenderPresent(renderer);
 

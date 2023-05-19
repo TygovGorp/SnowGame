@@ -31,7 +31,6 @@ void BattleManager::checkBattle(Entity** Enemies, Entity player)
 
 void BattleManager::Battle(Entity P, Entity* E)
 {
-	P.setBattle(1); //set player to in battle
 	cout << "You encountert a enemy!\n What will you do?\n 1: Attack\n 2: Item\n 3: Run\n";
 	int ans;
 	cin >> ans;
@@ -49,6 +48,7 @@ void BattleManager::Battle(Entity P, Entity* E)
 	default:
 		break;
 	}
+	std::cout << "battle" << endl;
 }
 
 void BattleManager::Attack(Entity P, Entity* E)
