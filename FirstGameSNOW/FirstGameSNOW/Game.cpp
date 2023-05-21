@@ -21,10 +21,6 @@ ConcreteManager cm;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
-	/* for future implementation
-	cout << "how many Enemys?\n";
-	cin >> Game::EnemyCount;
-	*/
 	AllEnemy = em.init(Game::EnemyCount);
 	AllConcrete = cm.init();
 	int flags = 0;
@@ -70,14 +66,8 @@ void Game::update()
 
 	kh.CheckInput();
 	Player.Update();
-	if (Player.getBattle() == 0)
-	{
-		bm.checkBattle(AllEnemy, Player);
-	}
-	else
-	{
-		bm.Battle(Player, *AllEnemy);
-	}
+	bm.update(AllEnemy, Player);
+	bm.init();
 	cm.update(Player, AllConcrete);
 }
 
@@ -86,6 +76,10 @@ void Game::render()
 	SDL_RenderClear(renderer);
 	cm.render(Player, AllConcrete);
 	Player.Render();
+	if (bm.renderMsg == true)
+	{
+		bm.render();
+	}
 	SDL_RenderPresent(renderer);
 
 }

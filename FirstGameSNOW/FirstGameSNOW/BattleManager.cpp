@@ -1,9 +1,17 @@
 #include "BattleManager.h"
 #include <iostream>
 #include"Game.h"
+#include"TextureManager.h"
 using namespace std;
 
-void BattleManager::checkBattle(Entity** Enemies, Entity player)
+void BattleManager::init()
+{
+	TextTex = TextureManager::LoadTexture("assets/BattleUI.png");
+	destRect = { 0, 0, Game::ScreenSize, Game::ScreenSize };
+	srcRect = { 0, 0, Game::ScreenSize, Game::ScreenSize };
+}
+
+void BattleManager::update(Entity** Enemies, Entity player)
 {
 	for (int i = 0; i < Game::EnemyCount; i++)
 	{
@@ -25,31 +33,48 @@ void BattleManager::checkBattle(Entity** Enemies, Entity player)
 		}
 	}
 
+
+}
+
+void BattleManager::render()
+{
+	TextureManager::Draw(TextTex, srcRect, destRect);
 }
 
 void BattleManager::Battle(Entity P, Entity* E)
 {
+	//P.setBattle(1);
+	just_walked_in = true;
 	if (msgSent == false)
 	{
-		cout << "You encountert a enemy!\n What will you do?\n 1: Attack\n 2: Item\n 3: Run\n";
+		renderMsg = true;
 	}
-	switch (Game::event.key.keysym.sym)
+
+	if (Game::event.type == SDL_KEYDOWN)
 	{
-	case SDLK_1:
-		Attack(P, E);
-		msgSent = true;
-		break;
-	case SDLK_2:
-		Item(P, E);
-		msgSent = true;
-		break;
-	case SDLK_3:
-		Run(P, E);
-		msgSent = true;
-		break;
-	default:
-		msgSent = true;
-		break;
+		
+		switch (Game::event.key.keysym.sym)
+		{
+		case SDLK_1:
+			Attack(P, E);
+			msgSent = true;
+			break;
+		case SDLK_2:
+			Item(P, E);
+			msgSent = true;
+			break;
+		case SDLK_w:
+		case SDLK_a:
+		case SDLK_s:
+		case SDLK_d:
+			std::cout << Game::event.key.keysym.sym << std::endl;
+			renderMsg = false;
+			msgSent = false;
+			break;
+		default:
+			msgSent = true;
+			break;
+		}
 	}
 }
 
@@ -58,14 +83,14 @@ void BattleManager::Attack(Entity P, Entity* E)
 	cout << "attack" << endl;
 	E->setHP(P.getDMG());
 	cout << E->getHP() << endl;
+	if (E->getHP() <= 0)
+	{
+		renderMsg = false;
+	}
+	
 }
 
 void BattleManager::Item(Entity P, Entity* E)
 {
 	cout << "Item" << endl;
-}
-
-void BattleManager::Run(Entity P, Entity* E)
-{
-	cout << "Run" << endl;
 }

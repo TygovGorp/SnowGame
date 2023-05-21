@@ -10,27 +10,27 @@ void KeyboardComponent::CheckInput()
 		{
 			if (Game::event.key.keysym.sym == SDLK_w)
 			{
-				cout << "w" << endl;
+				//cout << "w" << endl;
 				keyb.Y -= Game::gridSize;
 			}
 			if (Game::event.key.keysym.sym == SDLK_a)
 			{
-				cout << "a" << endl;
+				//cout << "a" << endl;
 				keyb.X -= Game::gridSize;
 			}
 			if (Game::event.key.keysym.sym == SDLK_s)
 			{
-				cout << "s" << endl;
+				//cout << "s" << endl;
 				keyb.Y += Game::gridSize;
 			}
 			if (Game::event.key.keysym.sym == SDLK_d)
 			{
-				cout << "d" << endl;
+				//cout << "d" << endl;
 				keyb.X += Game::gridSize;
 			}
 			if (Game::event.key.keysym.sym == SDLK_ESCAPE)
 			{
-				cout << "ecs" << endl;
+				//cout << "ecs" << endl;
 				Game::isRunning = false;
 			}
 			KeyboardComponent::CheckBounds();
