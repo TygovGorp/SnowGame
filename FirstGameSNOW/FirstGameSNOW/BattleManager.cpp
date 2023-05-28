@@ -21,19 +21,20 @@ void BattleManager::update(Entity** Enemies, Entity player)
 			&&
 			Enemies[i]->getHP() > 0 )
 		{
-			player.setBattle(1);
+			//player.setBattle(1);
+			renderMsg = true;
+			enemyNum = i;
 			Battle(player, Enemies[i]);
 		}
 		else
 		{
-			if (player.getBattle() == true)
+			if (enemyNum == i)
 			{
 				player.setBattle(0);
+				renderMsg = false;
 			}
 		}
 	}
-
-
 }
 
 void BattleManager::render()
@@ -43,13 +44,6 @@ void BattleManager::render()
 
 void BattleManager::Battle(Entity P, Entity* E)
 {
-	//P.setBattle(1);
-	just_walked_in = true;
-	if (msgSent == false)
-	{
-		renderMsg = true;
-	}
-
 	if (Game::event.type == SDL_KEYDOWN)
 	{
 		
@@ -57,11 +51,9 @@ void BattleManager::Battle(Entity P, Entity* E)
 		{
 		case SDLK_1:
 			Attack(P, E);
-			msgSent = true;
 			break;
 		case SDLK_2:
 			Item(P, E);
-			msgSent = true;
 			break;
 		case SDLK_w:
 		case SDLK_a:
@@ -69,10 +61,8 @@ void BattleManager::Battle(Entity P, Entity* E)
 		case SDLK_d:
 			std::cout << Game::event.key.keysym.sym << std::endl;
 			renderMsg = false;
-			msgSent = false;
 			break;
 		default:
-			msgSent = true;
 			break;
 		}
 	}
@@ -93,4 +83,5 @@ void BattleManager::Attack(Entity P, Entity* E)
 void BattleManager::Item(Entity P, Entity* E)
 {
 	cout << "Item" << endl;
+	
 }

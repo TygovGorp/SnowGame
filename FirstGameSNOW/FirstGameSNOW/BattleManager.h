@@ -11,8 +11,7 @@ public:
 	void Item(Entity P, Entity* E);
 	bool renderMsg = false;
 private:
-	bool msgSent = false;
-	bool just_walked_in = true;
+	int enemyNum = NULL;
 	SDL_Rect srcRect, destRect;
 	SDL_Texture* TextTex;
 };
