@@ -59,7 +59,6 @@ void BattleManager::Battle(Entity P, Entity* E)
 		case SDLK_a:
 		case SDLK_s:
 		case SDLK_d:
-			std::cout << Game::event.key.keysym.sym << std::endl;
 			renderMsg = false;
 			break;
 		default:

@@ -63,7 +63,6 @@ void Game::handleEvents()
 
 void Game::update()
 {
-
 	kh.CheckInput();
 	Player.Update();
 	bm.update(AllEnemy, Player);
@@ -89,4 +88,12 @@ void Game::clean()
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
+}
+
+void Game::gameOver()
+{
+	if (true)
+	{
+
+	}
 }
