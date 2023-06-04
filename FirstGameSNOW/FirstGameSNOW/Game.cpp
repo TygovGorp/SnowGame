@@ -18,6 +18,7 @@ BattleManager bm;
 Entity** AllEnemy;
 Concrete** AllConcrete;
 ConcreteManager cm;
+GameClear gm;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
@@ -43,6 +44,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	}
 
 	Player.Build(100, 10, 5, 0, 0, 2, "assets/player.png");
+	bm.init();
+	gm.init();
 }
 
 
@@ -66,12 +69,8 @@ void Game::update()
 	kh.CheckInput();
 	Player.Update();
 	bm.update(AllEnemy, Player);
-	bm.init();
 	cm.update(Player, AllConcrete);
-	if (bm.battleGameClear == true && cm.concreteGameClear == true)
-	{
-		cout << "Game Clear!!" << endl;
-	}
+	gm.update();
 }
 
 void Game::render()
@@ -82,6 +81,10 @@ void Game::render()
 	if (bm.renderMsg == true)
 	{
 		bm.render();
+	}
+	if (bm.battleGameClear == true && cm.concreteGameClear == true)
+	{
+		gm.render();
 	}
 	SDL_RenderPresent(renderer);
 

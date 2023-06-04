@@ -5,3 +5,4 @@
 #include"BattleManager.h"
 #include"EnemyManager.h"
 #include"ConcreteManager.h"
+#include"GameClear.h"

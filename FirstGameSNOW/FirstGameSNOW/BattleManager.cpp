@@ -7,12 +7,12 @@ using namespace std;
 void BattleManager::init()
 {
 	TextTex = TextureManager::LoadTexture("assets/BattleUI.png");
-	destRect = { 0, 0, Game::ScreenSize, Game::ScreenSize };
-	srcRect = { 0, 0, Game::ScreenSize, Game::ScreenSize };
 }
 
 void BattleManager::update(Entity** Enemies, Entity player)
 {
+	destRect = { 0, 0, Game::ScreenSize, Game::ScreenSize };
+	srcRect = { 0, 0, Game::ScreenSize, Game::ScreenSize };
 	gameClear(Enemies);
 	for (int i = 0; i < Game::EnemyCount; i++)
 	{
