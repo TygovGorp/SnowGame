@@ -68,6 +68,10 @@ void Game::update()
 	bm.update(AllEnemy, Player);
 	bm.init();
 	cm.update(Player, AllConcrete);
+	if (bm.battleGameClear == true && cm.concreteGameClear == true)
+	{
+		cout << "Game Clear!!" << endl;
+	}
 }
 
 void Game::render()

@@ -17,6 +17,7 @@ void ConcreteManager::update(Entity Player, Concrete** AllConcrete)
 {
 	snowGone[Player.EntityLocX / Game::gridSize][Player.EntityLocY / Game::gridSize] = true;
 	AllConcrete[Player.EntityLocX / Game::gridSize][Player.EntityLocY / Game::gridSize].init(Player);
+	gameClear(AllConcrete);
 }
 
 void ConcreteManager::render(Entity Player, Concrete** AllConcrete)
@@ -30,5 +31,24 @@ void ConcreteManager::render(Entity Player, Concrete** AllConcrete)
 				AllConcrete[i][j].render();
 			}
 		}
+	}
+}
+
+void ConcreteManager::gameClear(Concrete** AllConcrete)
+{
+	int concreteCount = 0;
+	for (int i = 0; i < Game::ScreenSize / Game::gridSize; i++)
+	{
+		for (int j = 0; j < Game::ScreenSize / Game::gridSize; j++)
+		{
+			if (snowGone[i][j] == true)
+			{
+				concreteCount++;
+			}
+		}
+	}
+	if (concreteCount == Game::ScreenSize / Game::gridSize * Game::ScreenSize / Game::gridSize)
+	{
+		concreteGameClear = true;
 	}
 }

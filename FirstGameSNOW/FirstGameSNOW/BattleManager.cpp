@@ -13,6 +13,7 @@ void BattleManager::init()
 
 void BattleManager::update(Entity** Enemies, Entity player)
 {
+	gameClear(Enemies);
 	for (int i = 0; i < Game::EnemyCount; i++)
 	{
 		if (player.EntityLocX == Enemies[i]->EntityLocX
@@ -40,6 +41,22 @@ void BattleManager::update(Entity** Enemies, Entity player)
 void BattleManager::render()
 {
 	TextureManager::Draw(TextTex, srcRect, destRect);
+}
+
+void BattleManager::gameClear(Entity** Enemies)
+{
+	int enemyCount = 0;
+	for (int i = 0; i < Game::EnemyCount; i++)
+	{
+		if (Enemies[i]->getHP() <= 0)
+		{
+			enemyCount++;
+		}
+	}
+	if (enemyCount == Game::EnemyCount)
+	{
+		battleGameClear = true;
+	}
 }
 
 void BattleManager::Battle(Entity P, Entity* E)
