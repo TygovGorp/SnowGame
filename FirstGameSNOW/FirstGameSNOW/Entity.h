@@ -10,6 +10,8 @@ public:
 	void setDMG(int d);
 	void setSPD(int s);
 	void setLoc(int x, int y);
+	void setBattle(int yn); 
+	bool getBattle();
 	int getHP();
 	int getDMG();
 	int getSPD();
@@ -21,6 +23,7 @@ private:
 	int dmg = 10;
 	int spd = 5;
 	int imgScale;
+	bool isInBattle = false;
 	SDL_Rect srcRect, destRect;
 	SDL_Texture* playerTex;
 

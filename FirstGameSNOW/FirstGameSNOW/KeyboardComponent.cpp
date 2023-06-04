@@ -6,31 +6,36 @@ void KeyboardComponent::CheckInput()
 {
 	if (Game::event.type == SDL_KEYDOWN)
 	{
-		switch (Game::event.key.keysym.sym)
+		if (Player.getBattle() == 0)
 		{
-		case SDLK_w:
-			cout << "w" << endl;
-			keyb.Y -= Game::gridSize;
-			break;
-		case SDLK_a:
-			cout << "a" << endl;
-			keyb.X -= Game::gridSize;
-			break;
-		case SDLK_s:
-			cout << "s" << endl;
-			keyb.Y += Game::gridSize;
-			break;
-		case SDLK_d:
-			cout << "d" << endl;
-			keyb.X += Game::gridSize;
-			break;
-		case SDLK_ESCAPE:
-			cout << "ecs" << endl;
-			Game::isRunning = false;
-		default:
-			break;
+			if (Game::event.key.keysym.sym == SDLK_w)
+			{
+				//cout << "w" << endl;
+				keyb.Y -= Game::gridSize;
+			}
+			if (Game::event.key.keysym.sym == SDLK_a)
+			{
+				//cout << "a" << endl;
+				keyb.X -= Game::gridSize;
+			}
+			if (Game::event.key.keysym.sym == SDLK_s)
+			{
+				//cout << "s" << endl;
+				keyb.Y += Game::gridSize;
+			}
+			if (Game::event.key.keysym.sym == SDLK_d)
+			{
+				//cout << "d" << endl;
+				keyb.X += Game::gridSize;
+			}
+			if (Game::event.key.keysym.sym == SDLK_ESCAPE)
+			{
+				//cout << "ecs" << endl;
+				Game::isRunning = false;
+			}
+			KeyboardComponent::CheckBounds();
 		}
-		KeyboardComponent::CheckBounds();
+
 	}
 }
 

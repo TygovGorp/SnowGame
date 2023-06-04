@@ -59,6 +59,28 @@ void Entity::setSPD(int s)
 	}
 }
 
+void Entity::setLoc(int x, int y)
+{
+	EntityLocX = x;
+	EntityLocY = y;
+}
+
+void Entity::setBattle(int yn) //y = 1 n = 0 
+{
+	switch (yn)
+	{
+	case 1:
+		isInBattle = true;
+		break;
+	case 2:
+		isInBattle = false;
+		break;
+	default:
+		break;
+	}
+
+}
+
 int Entity::getHP()
 {
 	return hp;
@@ -74,8 +96,8 @@ int Entity::getSPD()
 	return spd;
 }
 
-void Entity::setLoc(int x, int y)
+bool Entity::getBattle()
 {
-	EntityLocX = x;
-	EntityLocY = y;
+	return isInBattle;
 }
+

@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Managers.h"
+#include<iostream>
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
@@ -11,20 +12,18 @@ bool Game::isRunning = false;
 
 Game game;
 extern Entity Player;
-Entity Enemy1;
 KeyboardComponent kh;
 EnemyManager em;
 BattleManager bm;
 Entity** AllEnemy;
+Concrete** AllConcrete;
+ConcreteManager cm;
+GameClear gm;
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
-	/* for future implementation
-	cout << "how many Enemys?\n";
-	cin >> Game::EnemyCount;
-	*/
 	AllEnemy = em.init(Game::EnemyCount);
-
+	AllConcrete = cm.init(Player);
 	int flags = 0;
 
 	if (fullscreen)
@@ -43,7 +42,10 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
 		isRunning = true;
 	}
+
 	Player.Build(100, 10, 5, 0, 0, 2, "assets/player.png");
+	bm.init();
+	gm.init();
 }
 
 
@@ -64,15 +66,26 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	bm.checkBattle(AllEnemy, Player);
 	kh.CheckInput();
 	Player.Update();
+	bm.update(AllEnemy, Player);
+	cm.update(Player, AllConcrete);
+	gm.update();
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
+	cm.render(Player, AllConcrete);
 	Player.Render();
+	if (bm.renderMsg == true)
+	{
+		bm.render();
+	}
+	if (bm.battleGameClear == true && cm.concreteGameClear == true)
+	{
+		gm.render();
+	}
 	SDL_RenderPresent(renderer);
 
 }
