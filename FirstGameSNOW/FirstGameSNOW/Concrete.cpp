@@ -2,9 +2,21 @@
 
 void Concrete::init(Entity Player)
 {
-	ConcreteTex = TextureManager::LoadTexture("assets/concrete.png");
-	destRect = { Player.EntityLocX, Player.EntityLocY, Game::gridSize, Game::gridSize };
+	
+}
+
+void Concrete::update(Entity Player)
+{
+	if (ConcreteTex)
+	{
+
+	}
+	else
+	{
+		ConcreteTex = TextureManager::LoadTexture("assets/concrete.png");
+	}
 	srcRect = { 0, 0, 32, 32 };
+	destRect = { Player.EntityLocX, Player.EntityLocY, Game::gridSize, Game::gridSize };
 }
 
 bool Concrete::checkDup(Entity Player)
@@ -25,9 +37,4 @@ bool Concrete::checkDup(Entity Player)
 void Concrete::render()
 {
 	TextureManager::Draw(ConcreteTex, srcRect, destRect);
-}
-
-int Concrete::printnum()
-{
-	return 1;
 }

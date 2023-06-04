@@ -1,5 +1,5 @@
 #include "ConcreteManager.h"
-Concrete** ConcreteManager::init()
+Concrete** ConcreteManager::init(Entity Player)
 {
 	Concrete** concreteArr= new Concrete*[Game::ScreenSize / Game::gridSize];
 	for (int i = 0; i < Game::ScreenSize / Game::gridSize; ++i)
@@ -8,6 +8,7 @@ Concrete** ConcreteManager::init()
 		for (int j = 0; j < Game::ScreenSize / Game::gridSize; ++j)
 		{
 			concreteArr[i][j] = Concrete();
+			concreteArr[i][j].init(Player);
 		}
 	}
 	return concreteArr;
@@ -16,7 +17,7 @@ Concrete** ConcreteManager::init()
 void ConcreteManager::update(Entity Player, Concrete** AllConcrete)
 {
 	snowGone[Player.EntityLocX / Game::gridSize][Player.EntityLocY / Game::gridSize] = true;
-	AllConcrete[Player.EntityLocX / Game::gridSize][Player.EntityLocY / Game::gridSize].init(Player);
+	AllConcrete[Player.EntityLocX / Game::gridSize][Player.EntityLocY / Game::gridSize].update(Player);
 	gameClear(AllConcrete);
 }
 

@@ -23,7 +23,7 @@ GameClear gm;
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
 	AllEnemy = em.init(Game::EnemyCount);
-	AllConcrete = cm.init();
+	AllConcrete = cm.init(Player);
 	int flags = 0;
 
 	if (fullscreen)

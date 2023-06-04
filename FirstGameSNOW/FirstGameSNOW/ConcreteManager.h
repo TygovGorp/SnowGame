@@ -5,7 +5,7 @@
 class ConcreteManager
 {
 public:
-	Concrete** init();
+	Concrete** init(Entity Player);
 	void update(Entity Player, Concrete** AllConcrete);
 	void render(Entity Player, Concrete** AllConcrete);
 	void gameClear(Concrete** AllConcrete);
